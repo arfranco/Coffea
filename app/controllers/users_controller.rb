@@ -11,7 +11,7 @@ def create
       render json: { user: @user.as_json(only: [:email, 
                                                 :access_token, 
                                                 :username, 
-                                                :id) },
+                                                :id]) },
         status: :created
     else
       render json: { errors: @user.errors.full_messages },
