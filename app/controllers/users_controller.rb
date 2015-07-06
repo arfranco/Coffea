@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   #before_action :authenticate_user!, only: [:delete]
   
 def create
-    passhash = Digest::SHA1.hexdigest(params[:password])
+    password = password_encryption(params[:password])
     @user = User.new(email: params[:email],
-                     password: passhash,
+                     password: password,
                      username: params[:username])
     if @user.save
       # render json "register.json.jbuilder", status: :created
@@ -64,6 +64,16 @@ def create
         status: :unauthenticated
     end
     # redirect_to posts_path
+  end
+
+  private
+  def password_encryption(password)
+    if !password.nil? && password != ""
+      result = Digest::SHA1.hexdigest(password)
+    else
+      result = nil
+    end
+    result
   end
 
 end
