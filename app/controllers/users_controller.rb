@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:delete]
+  #before_action :authenticate_user!, only: [:delete]
   
 def create
     passhash = Digest::SHA1.hexdigest(params[:password])
