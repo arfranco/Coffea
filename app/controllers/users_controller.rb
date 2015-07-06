@@ -55,7 +55,7 @@ def create
 
   def delete
     @user = User.find_by(username: params[:username])
-    if current_user.access_token == @user.access_token
+    if :current_user.access_token == @user.access_token
       @user.destroy
       render json: { message: 'User has been deleted'},
       status: :ok
