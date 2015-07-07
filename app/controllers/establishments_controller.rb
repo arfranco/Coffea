@@ -21,6 +21,12 @@ class EstablishmentsController < ApplicationController
     end
   end
 
+  def index
+    @establishments = Establishment.all
+    render json: { establishments: @establishments.as_json(only: [:email, :username, :id]) },
+    status: :ok
+  end
+
 
 
 end
