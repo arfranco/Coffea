@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:delete, :show, :index]
   
-def create
+  def create
     password = password_encryption(params[:password])
     @user = User.new(email: params[:email],
                      password: password,
