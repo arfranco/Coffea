@@ -49,8 +49,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: { users: @users.as_json(only: [:email, :username, :id]) },
-    status: :ok
+    render 'index.json.jbuilder', status: :ok
   end
 
   def delete
