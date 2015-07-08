@@ -27,7 +27,7 @@ class EstablishmentsController < ApplicationController
   end
 
   def show 
-    @establishment = establishment.find_by(id: params[:id])
+    @establishment = Establishment.find_by(id: params[:id])
     if @establishment
     # render json "register.json.jbuilder", status: :created
     render json: { establishment: @establishment.as_json(only: [:name, :street_address,
