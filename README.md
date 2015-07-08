@@ -1,24 +1,44 @@
-== README
+# Coffea Backend API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Users Sign Up
+* Path: `POST '/users/signup'`
+* Params:
+  * email: a string
+  * password: a string
+  * user name: a string
+  * full name: a string
+* Response:
+  * Status Code: 201 if successful, 422 if unsuccessful
+  * Example success:
+  ``` 
+  	{ "user":{
+      "id":5,
+      "username":"whitney_hoggs",
+      "full_name":"Whitney Hoggs",
+      "email":"whitney1@gmail.com",
+      "access_token":"03c0b80efbe2b23a2c0764599ad60015"}
+    }
+    ```
+  * Example Failure:
+  ```{"errors":["Email has already been taken"]}```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+##Users Login
+* Path: `POST '/users/login'`
+* Params:
+  * password: a string
+  * user name: a string
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+  { "user": {
+    "id": 5,
+    "username": "whitney_hoggs",
+    "full_name": "Whitney Hoggs",
+    "email": "whitney1@gmail.com",
+    "access_token": "03c0b80efbe2b23a2c0764599ad60015"
+  }
+}
+  ```
 
 
