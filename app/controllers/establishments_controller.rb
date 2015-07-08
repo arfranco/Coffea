@@ -39,8 +39,8 @@ class EstablishmentsController < ApplicationController
     end
   end
 
-  def edit
-    
+  def update
+
   end
 
 end
