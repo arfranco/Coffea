@@ -23,10 +23,24 @@ class EstablishmentsController < ApplicationController
 
   def index
     @establishments = Establishment.all
-    render json: { establishments: @establishments.as_json(only: [:email, :username, :id]) },
-    status: :ok
+    render 'index.json.jbuilder', status: :ok
   end
 
+  def show 
+    @establishment = establishment.find_by(id: params[:id])
+    if @establishment
+    # render json "register.json.jbuilder", status: :created
+    render json: { establishment: @establishment.as_json(only: [:name, :street_address,
+                                                                :city, :state,
+                                                                :zip_code, :coffee_quality,
+                                                                :ambiance, :price,
+                                                                :wifi?]) },
+      status: :ok
+    end
+  end
 
+  def edit
+    
+  end
 
 end
