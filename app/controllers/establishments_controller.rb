@@ -1,5 +1,5 @@
 class EstablishmentsController < ApplicationController
-  before_action :authenticate_with_token!
+  before_action :authenticate_with_token!, only: [:index, :show, :update]
 
   def create
     @establishment = Establishment.new(name: params[:name],
@@ -40,7 +40,24 @@ class EstablishmentsController < ApplicationController
   end
 
   def update
-
+    @establishment = Establishment.find_by(id: params[:id])
+    attributes = {
+      name: params[:name],
+      street_address: params[:street_address],
+      city: params[:city],
+      state: params[:state],
+      zip_code: params[:zip_code],
+      coffee_quality: params[:coffee_quality],
+      ambiance: params[:ambiance],
+      price: params[:price],
+      wifi?: params[:wifi?]
+    }
+    if @review.update(attributes)
+      render json: { user: @review.as_json(only: [:id, :content, :flagged, :image_url]) }, status: :ok
+    else
+      render json: { errors: "There was an issue with the attributes you tried to update." }, 
+                    status: :unproccessable_entity
+    end
   end
 
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'user/:id', to: 'users#show'
   get 'users', to: 'users#index'
   delete 'user/:username/delete', to: 'users#delete'
+  patch 'users/:id', to: 'users#update'
 
   post 'establishments/new', to: 'establishments#create'
   get 'establishments', to: 'establishments#index'
@@ -23,7 +24,8 @@ Rails.application.routes.draw do
   get 'review/:id', to: 'reviews#show'
   patch 'review/:id', to: 'reviews#update'
   delete 'review/:id', to: 'reviews#delete'
-  
+
+
 
 
 

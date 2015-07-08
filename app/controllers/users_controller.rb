@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:delete, :show, :index]
+  before_action :authenticate_user!, only: [:delete, :show, :index, :update]
   
   def create
     password = password_encryption(params[:password])
@@ -63,6 +63,25 @@ class UsersController < ApplicationController
         status: :unauthenticated
     end
     # redirect_to posts_path
+  end
+
+  def update
+    @user = User.find_by(username: params[:username])
+    attributes = {
+      username: params[:username],
+      password: pass_hash,
+      email: params[:email]
+    }
+    if current_user.access_token == @user.access_token
+      if @user.update(attributes)
+        render json: { user: @user.as_json(only: [:id, :username, :email]) }, status: :ok
+      else
+        render json: { errors: "There was an issue with the attributes you tried to update." }, 
+                      status: :unproccessable_entity
+      end
+    else
+      render json: { message: "Only an authorized user can modify this account." }, status: :unauthorized
+    end
   end
 
   private
