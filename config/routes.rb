@@ -16,9 +16,15 @@ Rails.application.routes.draw do
   post 'establishments/new', to: 'establishments#create'
   get 'establishments', to: 'establishments#index'
   get 'establishment/:id', to: 'establishments#show'
-  patch 'establishment/:id', to: 'establishments#edit'
+  patch 'establishment/:id', to: 'establishments#update'
 
-  
+  post 'reviews/new', to: 'reviews#create'
+  get 'reviews', to: 'reviews#index'
+  get 'review/:id', to: 'reviews#show'
+  patch 'review/:id', to: 'reviews#update'
+  delete 'review/:id', to: 'reviews#delete'
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
