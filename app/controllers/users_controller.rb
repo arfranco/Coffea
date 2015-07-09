@@ -67,9 +67,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(username: params[:username])
+    passhash = password_encryption(params[:password])
     attributes = {
       username: params[:username],
-      password: pass_hash,
+      password: passhash,
       email: params[:email]
     }
     if current_user.access_token == @user.access_token
