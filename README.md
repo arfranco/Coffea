@@ -2,24 +2,24 @@
 
 ## Table of Contents
 1. [Overview](#overview)
-2. [User Model](#user-model)
+2. [User Model](#users-model)
   * [Sign Up](#users-sign-up)
   * [Login](#users-login)
-  * [Show User](#show-individual/specific-user)
+  * [Show](#show-specific-user)
   * [Index](#users-index)
   * [Delete](#delete-individual-user)
-  * [Update/Edit](#edit/update-individual-user)
+  * [Update](#update-individual-user)
 3. [Reviews Model](#reviews-model)
-  * [Create Review](#create-new-review)
-  * [Show Specific Review](#show-individual/specific-review)
+  * [Create](#create-new-review)
+  * [Show](#show-specific-review)
   * [Index](#reviews-index)
-  * [Delete Review](#delete-individual-review)
-  * [Update/Edit Review](#edit/update-individual-review)
+  * [Delete](#delete-individual-review)
+  * [Update](#update-individual-review)
 4. [Establishments Model](#establishments-model)
-  *	 [Create Establishment](#create-new-establishment)
-  * [Show Specific Establishment](#show-individual/specific-establishment)
+  *	 [Create](#create-new-establishment)
+  * [Show](#show-specific-establishment)
   * [Index](#establishments-index)
-  * [Update/Edit Establishment](#edit/update-individual-establishment)
+  * [Update](#update-individual-establishment)
 
 ##Overview
 
@@ -86,7 +86,7 @@ Response Status Code: 401
 }
   ```
   
-###Show Individual/Specific User
+###Show Specific User
 * Path: `GET '/user/:id'`
 * Params:
   * user id: an integer
@@ -141,7 +141,7 @@ Response Status Code: 401
   User has been deleted
   ```
 
-###Edit/Update Individual User
+###Update Individual User
 * Path: `PATCH '/user/:username/update'`
 * Params: Make sure all params are entered even if to update only one param
   * email: a string
@@ -179,7 +179,7 @@ Response Status Code: 401
     "image_url":""}}
    ```
 
-###Show Individual/Specific Review
+###Show Specific Review
 * Path: `GET '/review/:id'`
 * Params:
   * review id: an integer
@@ -242,7 +242,7 @@ Response Status Code: 401
   Review has been deleted
   ```
   
-###Edit/Update Individual Review
+###Update Individual Review
 * Path: `PATCH '/review/:id'`
 * Params: Make sure all params are entered even if to update only one param
   * content: a string
@@ -290,7 +290,7 @@ Response Status Code: 401
     "wifi":2}}
    ```
 
-###Show Individual/Specific Establishment
+###Show Specific Establishment
 * Path: `GET '/establishment/:id'`
 * Params:
   * establishment id: an integer
@@ -358,7 +358,7 @@ Response Status Code: 401
 ]
   ```
   
-###Edit/Update Individual Establishment
+###Update Individual Establishment
 * Path: `PATCH '/establishment/:id'`
 * Params: Make sure all params are entered even if to update only one param
   * name: a string
