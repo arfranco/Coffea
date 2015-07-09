@@ -61,16 +61,36 @@
 * Response:
   * Status Code: 201 if successful
   * Example success:
-  ``` 
-  { "user": {
-    "id": 3,
-    "username": "whitney_hoggs",
-    "email": "whitney1@gmail.com",
-    "access_token": "03c0b80efbe2b23a2c0764599ad60015"
+``` 
+  [
+  {
+    "id": 1,
+    "username": "tony",
+    "email": "anthony@yahoo.com"
+  },
+  {
+    "id": 2,
+    "username": "Beakbeak",
+    "email": "beakbeak@gmail.com"
+  },
+  {
+    "id": 8,
+    "username": "afranco",
+    "email": "anthony_franco@gmail.com"
   }
-}
+]
   ```
 
 
+##Delete Individual User
+* Path: `Delete '/user/:username/delete'`
+* Params:
+  * username: a string
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+  User has been deleted
+  ```
 
 

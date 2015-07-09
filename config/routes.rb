@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'user/:id', to: 'users#show'
   get 'users', to: 'users#index'
   delete 'user/:username/delete', to: 'users#delete'
-  patch 'users/:id', to: 'users#update'
+  patch 'user/:username/update', to: 'users#update'
 
   post 'establishments/new', to: 'establishments#create'
   get 'establishments', to: 'establishments#index'
