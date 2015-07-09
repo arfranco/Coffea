@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:delete, :show, :index, :update]
+  before_action :authenticate_with_token!, only: [:delete, :show, :index, :update]
   
   def create
     password = password_encryption(params[:password])
