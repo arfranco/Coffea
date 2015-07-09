@@ -87,7 +87,7 @@ class UsersController < ApplicationController
 
   private
   def password_encryption(password)
-    if password.length > 8
+    if password.length >= 8
       result = Digest::SHA1.hexdigest(password)
     else
       result = nil
