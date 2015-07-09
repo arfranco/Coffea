@@ -67,6 +67,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(username: params[:username])
+    passhash = password_encryption(params[:password])
     attributes = {
       username: params[:username],
       password: passhash,
