@@ -29,8 +29,9 @@ class ReviewsController < ApplicationController
     if @review
     # render json "register.json.jbuilder", status: :created
     render json: { review: @review.as_json(only: [:content, :user_id, 
-                                                  :establishment_id, :flagged]) },
-      status: :ok
+                                                  :establishment_id, :flagged,
+                                                  :image_url]) },
+    status: :ok
     end
   end
 
@@ -43,7 +44,10 @@ class ReviewsController < ApplicationController
     }
     if current_user.id == @review.user_id
       if @review.update(attributes)
-        render json: { user: @review.as_json(only: [:id, :content, :flagged, :image_url]) }, status: :ok
+        render json: { user: @review.as_json(only: [:id, :content, :user_id, 
+                                                    :establishment_id 
+                                                    :flagged, :image_url]) }, 
+        status: :ok
       else
         render json: { errors: "There was an issue with the attributes you tried to update." }, 
                       status: :unproccessable_entity
