@@ -85,7 +85,7 @@
 
 
 ##Delete Individual User
-* Path: `Delete '/user/:username/delete'`
+* Path: `DELETE '/user/:username/delete'`
 * Params:
   * username: a string
 * Response:
@@ -110,3 +110,22 @@
   "username":"afranco",
   "email":"anthony_franco7@gmail.com"}}
   ```
+  
+-----------------------------------------------------------------------
+##Create New Review
+* Path: `POST '/reviews/new'`
+* Params:
+  * content: a string
+  * user_id: an integer
+  * establishment_id: an integer
+* Response:
+  * Status Code: 201 if successful, 422 if unsuccessful
+  * Example success:
+  ``` 
+    { "user":{
+      "id":3,
+      "username":"whitney_hoggs",
+      "email":"whitney1@gmail.com",
+      "access_token":"03c0b80efbe2b23a2c0764599ad60015"}
+    }
+   ```

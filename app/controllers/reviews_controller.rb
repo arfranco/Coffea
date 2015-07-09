@@ -5,15 +5,17 @@ class ReviewsController < ApplicationController
     @review = Review.new(content: params[:content],
                          user_id: params[:user_id],
                          establishment_id: params[:establishment_id],
-                         )
+                         flagged: params[:flagged],
+                         image_url: params[:image_url])
     if @review.save
       # render json "register.json.jbuilder", status: :created
       render json: { review: @review.as_json(only: [:content, :user_id, 
-                                                    :establishment_id, :flagged]) },
-        status: :created
+                                                    :establishment_id, :flagged,
+                                                    :image_url]) },
+      status: :created
     else
-      render json: { errors: @user.errors.full_messages },
-        status: :unprocessable_entity
+      render json: { errors: @review.errors.full_messages },
+      status: :unprocessable_entity
     end
   end
 
