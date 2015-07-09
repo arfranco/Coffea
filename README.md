@@ -1,5 +1,7 @@
 # Coffea Backend API
 
+####Base URL: https://pacific-atoll-5255.herokuapp.com
+
 ##Users Sign Up
 * Path: `POST '/users/signup'`
 * Params:
@@ -93,4 +95,18 @@
   User has been deleted
   ```
 
-
+##Edit/Update Individual User
+* Path: `PATCH '/user/:username/update'`
+* Params: Make sure all params are entered even if to update only one param
+  * email: a string
+  * password: a string
+  * user name: a string
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+  {"user":
+  {"id":8,
+  "username":"afranco",
+  "email":"anthony_franco7@gmail.com"}}
+  ```
