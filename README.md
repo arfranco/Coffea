@@ -1,5 +1,26 @@
 # Coffea Backend API
 
+## Table of Contents
+1. [Overview](#overview)
+2. [User Model](#user-model)
+  * [Sign Up](#users-sign-up)
+  * [Login](#users-login)
+  * [Show User](#show-individual/specific-user)
+  * [Index](#users-index)
+  * [Delete](#delete-individual-user)
+  * [Update/Edit](#edit/update-individual-user)
+3. [Reviews Model](#reviews-model)
+  * [Create Review](#create-new-review)
+  * [Show Specific Review](#show-individual/specific-review)
+  * [Index](#reviews-index)
+  * [Delete Review](#delete-individual-review)
+  * [Update/Edit Review](#edit/update-individual-review)
+4. [Establishments Model](#establishments-model)
+  *	 [Create Establishment](#create-new-establishment)
+  * [Show Specific Establishment](#show-individual/specific-establishment)
+  * [Index](#establishments-index)
+  * [Update/Edit Establishment](#edit/update-individual-establishment)
+
 ##Overview
 
 
@@ -9,7 +30,7 @@ All access is over HTTPS and access is from the [https://pacific-atoll-5255.hero
 
 Every request assumes an access token unless stated otherwise. The access token must be provided in the header.
 
-To do this make sure you set 'Access-Token' equal to the user's access token in every required request. An example of how this should look is as follows:
+To do this make sure you set ```'Access-Token'``` equal to the user's access token in every required request. An example of how this should look is as follows:
 
 ```['Access-Token'] = 'f16395873f4bcee7ef5d46e531b9f659'```
 
@@ -24,8 +45,8 @@ Response Status Code: 401
 ```
 
 
-
-##Users Sign Up
+##Users Model
+###Users Sign Up
 * Path: `POST '/users/signup'`
 * Access-Token: Not required.
 * Params:
@@ -46,7 +67,7 @@ Response Status Code: 401
   * Example Failure:
   ```{"errors":["Email has already been taken"]}```
 
-##Users Login
+###Users Login
 * Path: `POST '/users/login'`
 * Access-Token: Not required.
 * Params:
@@ -65,7 +86,7 @@ Response Status Code: 401
 }
   ```
   
-##Show Individual/Specific User
+###Show Individual/Specific User
 * Path: `GET '/user/:id'`
 * Params:
   * user id: an integer
@@ -81,8 +102,8 @@ Response Status Code: 401
 }
   ```
 
-##Users Index
-* Path: `GET '/users'`
+###Users Index
+* Path: `GET '/users'` 
 * Params:
   * none
 * Response:
@@ -109,7 +130,7 @@ Response Status Code: 401
   ```
 
 
-##Delete Individual User
+###Delete Individual User
 * Path: `DELETE '/user/:username/delete'`
 * Params:
   * username: a string
@@ -120,7 +141,7 @@ Response Status Code: 401
   User has been deleted
   ```
 
-##Edit/Update Individual User
+###Edit/Update Individual User
 * Path: `PATCH '/user/:username/update'`
 * Params: Make sure all params are entered even if to update only one param
   * email: a string
@@ -137,7 +158,8 @@ Response Status Code: 401
   ```
   
 -----------------------------------------------------------------------
-##Create New Review
+##Reviews Model
+###Create New Review
 * Path: `POST '/reviews/new'`
 * Params:
   * content: a string
@@ -157,7 +179,7 @@ Response Status Code: 401
     "image_url":""}}
    ```
 
-##Show Individual/Specific Review
+###Show Individual/Specific Review
 * Path: `GET '/review/:id'`
 * Params:
   * review id: an integer
@@ -173,7 +195,7 @@ Response Status Code: 401
     "image_url":""}}
   ```
 
-##Reviews Index
+###Reviews Index
 * Path: `GET '/reviews'`
 * Params:
   * none
@@ -209,7 +231,7 @@ Response Status Code: 401
 ]
   ```
 
-##Delete Individual Review
+###Delete Individual Review
 * Path: `DELETE '/review/:id'`
 * Params:
   * review id: an integer
@@ -220,7 +242,7 @@ Response Status Code: 401
   Review has been deleted
   ```
   
-##Edit/Update Individual Review
+###Edit/Update Individual Review
 * Path: `PATCH '/review/:id'`
 * Params: Make sure all params are entered even if to update only one param
   * content: a string
@@ -238,3 +260,128 @@ Response Status Code: 401
     "image_url":""}}
   ```
   
+------------------------------------------------------------------------
+##Establishments Model
+###Create New Establishment
+* Path: `POST '/establishments/new'`
+* Params:
+  * name: a string
+  * street_address: a string
+  * city: a string 
+  * state: a string
+  * zip_code: an integer
+  * coffee_quality: an integer
+  * price: an integer
+  * ambiance: an integer
+  * wifi: an integer
+* Response:
+  * Status Code: 201 if successful, 422 if unsuccessful
+  * Example success:
+  ``` 
+    {"establishment":
+    {"name":"Joe's Coffee Shop",
+    "street_address":"115 MLK Drive",
+    "city":"Atlanta",
+    "state":"Georgia",
+    "zip_code":30303,
+    "coffee_quality":2,
+    "price":1,
+    "ambiance":3,
+    "wifi":2}}
+   ```
+
+###Show Individual/Specific Establishment
+* Path: `GET '/establishment/:id'`
+* Params:
+  * establishment id: an integer
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+    {"establishment":
+    {"name":"Joe's Coffee Shop",
+    "street_address":"115 MLK Drive",
+    "city":"Atlanta",
+    "state":"Georgia",
+    "zip_code":30303,
+    "coffee_quality":2,
+    "price":1,
+    "ambiance":3,
+    "wifi":2}}
+   ```
+ 
+###Establishments Index
+* Path: `GET '/establishments'`
+* Params:
+  * none
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+``` 
+  [
+   {
+   	 "id": 1,
+   	 "name":"Joe's Coffee Shop",
+    "street_address":"115 MLK Drive",
+    "city":"Atlanta",
+    "state":"Georgia",
+    "zip_code":30303,
+    "coffee_quality":2,
+    "price":1,
+    "ambiance":3,
+    "wifi":2
+    },
+  {
+   	 "id": 2,
+   	 "name":"Coffee Beans",
+    "street_address":"143 Pomona Ave",
+    "city":"Marietta",
+    "state":"Georgia",
+    "zip_code":30303,
+    "coffee_quality":1,
+    "price":1,
+    "ambiance":3,
+    "wifi":3
+    },
+  {
+   	 "id": 3,
+   	 "name":"Buenos Dias Coffee Shop",
+    "street_address":"5600 North Dr",
+    "city":"Atlanta",
+    "state":"Georgia",
+    "zip_code":30303,
+    "coffee_quality":3,
+    "price":3,
+    "ambiance":2,
+    "wifi":3
+    }
+]
+  ```
+  
+###Edit/Update Individual Establishment
+* Path: `PATCH '/establishment/:id'`
+* Params: Make sure all params are entered even if to update only one param
+  * name: a string
+  * street_address: a string
+  * city: a string 
+  * state: a string
+  * zip_code: an integer
+  * coffee_quality: an integer
+  * price: an integer
+  * ambiance: an integer
+  * wifi: an integer
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+  	{"establishment":
+    {"name":"Joe's Coffee Shop",
+    "street_address":"115 MLK Drive",
+    "city":"Atlanta",
+    "state":"Georgia",
+    "zip_code":30304,
+    "coffee_quality":3,
+    "price":2,
+    "ambiance":3,
+    "wifi":2}}
+  ```

@@ -6,14 +6,22 @@ class EstablishmentsController < ApplicationController
                                        street_address: params[:street_address],
                                        city: params[:city],
                                        state: params[:state],
-                                       zip_code: params[:zip_code])
+                                       zip_code: params[:zip_code],
+                                       coffee_quality: params[:coffee_quality],
+                                       wifi: params[:wifi],
+                                       price: params[:price],
+                                       ambiance: params[:ambiance])
     if @establishment.save
       # render json "register.json.jbuilder", status: :created
       render json: { establishment: @establishment.as_json(only: [:name, 
                                                                   :street_address, 
                                                                   :city, 
                                                                   :state,
-                                                                  :zip_code]) },
+                                                                  :zip_code,
+                                                                  :coffee_quality,
+                                                                  :wifi,
+                                                                  :price,
+                                                                  :ambiance]) },
         status: :created
     else
       render json: { errors: @user.errors.full_messages },
