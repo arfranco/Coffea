@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
     if current_user.id == @review.user_id
       if @review.update(attributes)
         render json: { user: @review.as_json(only: [:id, :content, :user_id, 
-                                                    :establishment_id 
+                                                    :establishment_id, 
                                                     :flagged, :image_url]) }, 
         status: :ok
       else
