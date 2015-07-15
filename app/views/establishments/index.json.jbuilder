@@ -8,5 +8,5 @@ json.array! @establishments do |establishment|
   json.coffee_quality establishment.coffee_quality
   json.ambiance establishment.ambiance
   json.price establishment.price
-  json.wifi? establishment.wifi?
+  json.wifi establishment.wifi
 end
