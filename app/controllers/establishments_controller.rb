@@ -68,4 +68,10 @@ class EstablishmentsController < ApplicationController
     end
   end
 
+  # def search
+  #   binding.pry
+  #   if params[:price] != nil || ""
+  #     @establishment_price = Establishment.where("price <= params[:price]")
+  # end
+
 end

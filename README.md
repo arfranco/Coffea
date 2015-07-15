@@ -172,7 +172,7 @@ Response Status Code: 401
   * Example success:
   ``` 
     {"review":
-    {"id": 1
+    {"id": 1,
     "content":"This is a test review",
     "user_id":1,
     "establishment_id":1,
