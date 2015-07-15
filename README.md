@@ -172,7 +172,8 @@ Response Status Code: 401
   * Example success:
   ``` 
     {"review":
-    {"content":"This is a test review",
+    {"id": 1
+    "content":"This is a test review",
     "user_id":1,
     "establishment_id":1,
     "flagged":false,
@@ -279,7 +280,8 @@ Response Status Code: 401
   * Example success:
   ``` 
     {"establishment":
-    {"name":"Joe's Coffee Shop",
+    {"id":2,
+    "name":"Joe's Coffee Shop",
     "street_address":"115 MLK Drive",
     "city":"Atlanta",
     "state":"Georgia",
@@ -320,8 +322,8 @@ Response Status Code: 401
 ``` 
   [
    {
-   	 "id": 1,
-   	 "name":"Joe's Coffee Shop",
+   	"id": 1,
+   	"name":"Joe's Coffee Shop",
     "street_address":"115 MLK Drive",
     "city":"Atlanta",
     "state":"Georgia",
@@ -332,8 +334,8 @@ Response Status Code: 401
     "wifi":2
     },
   {
-   	 "id": 2,
-   	 "name":"Coffee Beans",
+   	"id": 2,
+   	"name":"Coffee Beans",
     "street_address":"143 Pomona Ave",
     "city":"Marietta",
     "state":"Georgia",
@@ -344,8 +346,8 @@ Response Status Code: 401
     "wifi":3
     },
   {
-   	 "id": 3,
-   	 "name":"Buenos Dias Coffee Shop",
+   	"id": 3,
+   	"name":"Buenos Dias Coffee Shop",
     "street_address":"5600 North Dr",
     "city":"Atlanta",
     "state":"Georgia",
