@@ -13,7 +13,8 @@ class EstablishmentsController < ApplicationController
                                        ambiance: params[:ambiance])
     if @establishment.save
       # render json "register.json.jbuilder", status: :created
-      render json: { establishment: @establishment.as_json(only: [:id,:name, 
+      render json: { establishment: @establishment.as_json(only: [:id,
+                                                                  :name, 
                                                                   :street_address, 
                                                                   :city, 
                                                                   :state,
