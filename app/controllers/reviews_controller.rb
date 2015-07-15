@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
                          image_url: params[:image_url])
     if @review.save
       # render json "register.json.jbuilder", status: :created
-      render json: { review: @review.as_json(only: [:content, :user_id, 
+      render json: { review: @review.as_json(only: [:id, :content, :user_id, 
                                                     :establishment_id, :flagged,
                                                     :image_url]) },
       status: :created
