@@ -70,26 +70,35 @@ class EstablishmentsController < ApplicationController
   end
 
   def search
-    if blank_empty(params[:price]) && blank_empty(params[:ambiance]) && blank_empty(params[:wifi]) && blank_empty(params[:coffee_quality])
-      @establishments = Establishment.where("price <= :search_price AND ambiance >= :search_ambiance AND wifi >= :search_wifi AND coffee_quality >= :search_coffee_quality", {search_price: params[:price], search_ambiance: params[:ambiance], search_wifi: params[:wifi], search_coffee_quality: params[:coffee_quality]})
-      render 'index.json.jbuilder', status: :ok
-    else
-      if blank_empty(params[:price]) && blank_empty(params[:ambiance]) && blank_empty(params[:wifi])
-        @establishments = Establishment.where("price <= :search_price AND ambiance >= :search_ambiance AND wifi >= :search_wifi", {search_price: params[:price], search_ambiance: params[:ambiance], search_wifi: params[:wifi]})
-        render 'index.json.jbuilder', status: :ok 
-      else 
-        if blank_empty(params[:price]) && blank_empty(params[:ambiance]) 
-          @establishments = Establishment.where("price <= :search_price AND ambiance >= :search_ambiance", {search_price: params[:price], search_ambiance: params[:ambiance]}) 
-          render 'index.json.jbuilder', status: :ok
-        else
-          if blank_empty(params[:price]) 
-            @establishments = Establishment.where("price <= :search_price", {search_price: params[:price]}) 
-            render 'index.json.jbuilder', status: :ok
-          end
-        end
-      end
-    end
+    @establishments = Establishment.where(nil) # creates an anonymous scope
+    @establishments = @establishments.wifi(params[:wifi]) if params[:wifi].present?
+    @establishments = @establishments.ambiance(params[:ambiance]) if params[:ambiance].present?
+    @establishments = @establishments.price(params[:price]) if params[:price].present?
+    @establishments = @establishments.coffee_quality(params[:coffee_quality]) if params[:coffee_quality].present?
+    render json: @establishments, status: :ok
   end
+
+  # def search
+  #   if blank_empty(params[:price]) && blank_empty(params[:ambiance]) && blank_empty(params[:wifi]) && blank_empty(params[:coffee_quality])
+  #     @establishments = Establishment.where("price <= :search_price AND ambiance >= :search_ambiance AND wifi >= :search_wifi AND coffee_quality >= :search_coffee_quality", {search_price: params[:price], search_ambiance: params[:ambiance], search_wifi: params[:wifi], search_coffee_quality: params[:coffee_quality]})
+  #     render 'index.json.jbuilder', status: :ok
+  #   else
+  #     if blank_empty(params[:price]) && blank_empty(params[:ambiance]) && blank_empty(params[:wifi])
+  #       @establishments = Establishment.where("price <= :search_price AND ambiance >= :search_ambiance AND wifi >= :search_wifi", {search_price: params[:price], search_ambiance: params[:ambiance], search_wifi: params[:wifi]})
+  #       render 'index.json.jbuilder', status: :ok 
+  #     else 
+  #       if blank_empty(params[:price]) && blank_empty(params[:ambiance]) 
+  #         @establishments = Establishment.where("price <= :search_price AND ambiance >= :search_ambiance", {search_price: params[:price], search_ambiance: params[:ambiance]}) 
+  #         render 'index.json.jbuilder', status: :ok
+  #       else
+  #         if blank_empty(params[:price]) 
+  #           @establishments = Establishment.where("price <= :search_price", {search_price: params[:price]}) 
+  #           render 'index.json.jbuilder', status: :ok
+  #         end
+  #       end
+  #     end
+  #   end
+  # end
 
   #       if params[:ambiance] != nil || params[:ambiance] != ""
   #       @establishment_ambiance = @establishment_price.where("ambiance >= :search_ambiance", {search_ambiance: params[:ambiance]})
