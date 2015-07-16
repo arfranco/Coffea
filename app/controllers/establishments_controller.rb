@@ -23,7 +23,7 @@ class EstablishmentsController < ApplicationController
                                                                   :wifi,
                                                                   :price,
                                                                   :ambiance]) },
-        status: :created
+      status: :created
     else
       render json: { errors: @user.errors.full_messages },
         status: :unprocessable_entity
@@ -77,18 +77,6 @@ class EstablishmentsController < ApplicationController
     @establishments = @establishments.coffee_quality(params[:coffee_quality]) if params[:coffee_quality].present?
     render json: @establishments, status: :ok
   end
-
- 
-  # private
-  # def blank_empty(params)
-  #   if params != nil || params != ""
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
-
-    
   
 
 end
