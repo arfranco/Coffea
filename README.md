@@ -16,10 +16,11 @@
   * [Delete](#delete-individual-review)
   * [Update](#update-individual-review)
 4. [Establishments Model](#establishments-model)
-  *	 [Create](#create-new-establishment)
+  *	[Create](#create-new-establishment)
   * [Show](#show-specific-establishment)
   * [Index](#establishments-index)
   * [Update](#update-individual-establishment)
+  * [Search](#search-establishments)
 
 ##Overview
 
@@ -387,3 +388,46 @@ Response Status Code: 401
     "ambiance":3,
     "wifi":2}}
   ```
+
+###Search Establishments
+* Path: `GET '/establishments/search'`
+* Params: 
+  * coffee_quality: an integer
+  * price: an integer
+  * ambiance: an integer
+  * wifi: an integer
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+    [
+  {
+    "id": 1,
+    "name": "Joe's Coffee",
+    "street_address": "15 Main St",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip_code": 30303,
+    "coffee_quality": 2,
+    "ambiance": 3,
+    "created_at": "2015-07-15T17:32:29.265Z",
+    "updated_at": "2015-07-15T17:32:29.265Z",
+    "price": 3,
+    "wifi": 2
+  },
+  {
+    "id": 4,
+    "name": "Whitney's Coffee",
+    "street_address": "150 Main St",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip_code": 30304,
+    "coffee_quality": 3,
+    "ambiance": 2,
+    "created_at": "2015-07-15T21:26:38.197Z",
+    "updated_at": "2015-07-15T21:26:38.197Z",
+    "price": 2,
+    "wifi": 1
+  }
+]
+   ```
