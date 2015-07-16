@@ -15,6 +15,7 @@
   * [Index](#reviews-index)
   * [Delete](#delete-individual-review)
   * [Update](#update-individual-review)
+  * [Search](#search-reviews)
 4. [Establishments Model](#establishments-model)
   *	[Create](#create-new-establishment)
   * [Show](#show-specific-establishment)
@@ -261,6 +262,28 @@ Response Status Code: 401
     "flagged":false,
     "image_url":""}}
   ```
+
+###Search Reviews
+* Path: `GET '/reviews/search'`
+* Params: 
+  * keyword: a string
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+    [
+  {
+    "id": 1,
+    "content": "This is a test review",
+    "user_id": 1,
+    "created_at": "2015-07-09T18:44:07.348Z",
+    "updated_at": "2015-07-09T18:44:07.348Z",
+    "establishment_id": 1,
+    "flagged": false,
+    "image_url": ""
+  }
+]
+   ```
   
 ------------------------------------------------------------------------
 ##Establishments Model
