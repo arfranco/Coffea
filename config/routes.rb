@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'review/:id', to: 'reviews#show'
   patch 'review/:id', to: 'reviews#update'
   delete 'review/:id', to: 'reviews#delete'
+  get 'reviews/search', to: 'reviews#search'
 
 
 

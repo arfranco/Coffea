@@ -68,4 +68,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def search
+    search_text = params[:keyword]
+    @reviews = Review.quick_search(search_text)
+    render json: @reviews, status: :ok
+  end
+
 end
