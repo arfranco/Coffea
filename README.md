@@ -16,6 +16,7 @@
   * [Delete](#delete-individual-review)
   * [Update](#update-individual-review)
   * [Search](#search-reviews)
+  * [Available Reviews](#search-reviews)
 4. [Establishments Model](#establishments-model)
   *	[Create](#create-new-establishment)
   * [Show](#show-specific-establishment)
@@ -199,7 +200,7 @@ Response Status Code: 401
   ```
 
 ###Reviews Index
-* Path: `GET '/reviews'`
+* Path: `GET '/reviews/all'`
 * Params:
   * none
 * Response:
@@ -220,7 +221,7 @@ Response Status Code: 401
     "content": "The coffee at this place is BEYOND amazing",
     "user_id": 3
     "establishment_id": 2
-    "flagged": false
+    "flagged": true
     "image_url": "http://www.hercampus.com/sites/default/files/2014/12/11/hc%20coffee%20shop_1.jpg"
   },
   {
@@ -285,6 +286,33 @@ Response Status Code: 401
 ]
    ```
   
+###Available Reviews Index
+* Path: `GET '/reviews/available'`
+* Params:
+  * none
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+``` 
+  [
+  {
+    "id": 1,
+    "content": "This is a test review",
+    "user_id": 2
+    "establishment_id": 1
+    "flagged": false
+    "image_url": ""
+  },
+  {
+    "id": 3,
+    "content": "The wifi here was really fast",
+    "user_id": 5
+    "establishment_id": 1
+    "flagged": false
+    "image_url": ""
+  }
+]
+  ```
 ------------------------------------------------------------------------
 ##Establishments Model
 ###Create New Establishment

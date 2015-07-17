@@ -1,11 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:index, :show, :update, :delete]
+  before_action :authenticate_with_token!, only: [:create, :index, :show, :update, :delete, :available]
 
   def create
+    flagged = blank(params[:flagged])
     @review = Review.new(content: params[:content],
                          user_id: params[:user_id],
                          establishment_id: params[:establishment_id],
-                         flagged: params[:flagged],
+                         flagged: flagged,
                          image_url: params[:image_url])
     if @review.save
       # render json "register.json.jbuilder", status: :created
@@ -20,9 +21,14 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @review = Review.all
+    @reviews = Review.all
     render 'index.json.jbuilder', status: :ok
   end
+
+  def available
+    @reviews = Review.where(flagged: [false])
+    render 'index.json.jbuilder', status: :ok
+  end 
 
   def show 
     @review = Review.find_by(id: params[:id])
@@ -72,6 +78,15 @@ class ReviewsController < ApplicationController
     search_text = params[:keyword]
     @reviews = Review.quick_search(search_text)
     render json: @reviews, status: :ok
+  end
+
+  private
+  def blank(params)
+    if params = ""
+      params = false 
+    else
+      params
+    end
   end
 
 end
