@@ -16,7 +16,7 @@
   * [Delete](#delete-individual-review)
   * [Update](#update-individual-review)
   * [Search](#search-reviews)
-  * [Available Reviews](#search-reviews)
+  * [Available Reviews](#available-reviews-index)
 4. [Establishments Model](#establishments-model)
   *	[Create](#create-new-establishment)
   * [Show](#show-specific-establishment)
