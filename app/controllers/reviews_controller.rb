@@ -42,16 +42,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    attributes = set_attributes(params)
     @review = Review.find_by(id: params[:id])
     @user = User.find_by(id: @review.user_id)
-    attributes = {
-      content: params[:content],
-      flagged: params[:flagged],
-      image_url: params[:image_url]
-    }
     if current_user.access_token == @user.access_token
       if @review.update(attributes)
-        render json: { user: @review.as_json(only: [:id, :content, :user_id, 
+        render json: { review: @review.as_json(only: [:id, :content, :user_id, 
                                                     :establishment_id, 
                                                     :flagged, :image_url]) }, 
         status: :ok
@@ -89,5 +85,16 @@ class ReviewsController < ApplicationController
       params
     end
   end
+
+ def set_attributes(params)
+  attributes = { }
+  list = [:content, :flagged, :image_url]
+  list.each do |l|
+    if params[l]
+      attributes.merge!(l => params[l])
+    end
+  end
+  attributes
+end
 
 end

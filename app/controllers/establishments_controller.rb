@@ -49,26 +49,12 @@ class EstablishmentsController < ApplicationController
   end
 
   def update
+    attributes = set_attributes(params)
     @establishment = Establishment.find_by(id: params[:id])
-    if params[:wifi].present?
-      updated_wifi = (@establishment.wifi + params[:wifi])/ 2 
-    else 
-      updated_wifi = @establishment.wifi
-    end
-    binding.pry
-    attributes = {
-      name: params[:name],
-      street_address: params[:street_address],
-      city: params[:city],
-      state: params[:state],
-      zip_code: params[:zip_code],
-      coffee_quality: params[:coffee_quality],
-      ambiance: params[:ambiance],
-      price: params[:price],
-      wifi: params[:wifi]
-    }
-    if @review.update(attributes)
-      render json: { user: @review.as_json(only: [:id, :content, :flagged, :image_url]) }, status: :ok
+    new_ratings = update_ratings(params, @establishment)
+    attributes.merge!(new_ratings)
+    if @establishment.update(attributes)
+      render json: { establishment: @establishment.as_json(except: [:created_at, :updated_at]) }, status: :ok
     else
       render json: { errors: "There was an issue with the attributes you tried to update." }, 
                     status: :unproccessable_entity
@@ -84,5 +70,33 @@ class EstablishmentsController < ApplicationController
     render json: @establishments, status: :ok
   end
   
+
+  private 
+
+  def set_attributes(params)
+    attributes = { }
+    list = [:name, :street_address, :city,
+      :state, :zip_code]
+    list.each do |l|
+      if params[l]
+        attributes.merge!(l => params[l])
+      end
+    end
+    attributes
+  end
+
+  def update_ratings(params, establishment)
+    updated_ratings = { }
+    list = [:coffee_quality, :price, :ambiance, :wifi]
+    list.each do |l|
+      if params[l]
+        new_rating = (establishment[l] + params[l].to_f)/2
+        updated_ratings.merge!(l => new_rating)
+      end
+    end
+    updated_ratings
+  end
+
+
 
 end
