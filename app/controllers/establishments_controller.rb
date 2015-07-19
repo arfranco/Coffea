@@ -50,6 +50,12 @@ class EstablishmentsController < ApplicationController
 
   def update
     @establishment = Establishment.find_by(id: params[:id])
+    if params[:wifi].present?
+      updated_wifi = (@establishment.wifi + params[:wifi])/ 2 
+    else 
+      updated_wifi = @establishment.wifi
+    end
+    binding.pry
     attributes = {
       name: params[:name],
       street_address: params[:street_address],
@@ -59,7 +65,7 @@ class EstablishmentsController < ApplicationController
       coffee_quality: params[:coffee_quality],
       ambiance: params[:ambiance],
       price: params[:price],
-      wifi?: params[:wifi?]
+      wifi: params[:wifi]
     }
     if @review.update(attributes)
       render json: { user: @review.as_json(only: [:id, :content, :flagged, :image_url]) }, status: :ok

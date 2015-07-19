@@ -43,12 +43,13 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id])
+    @user = User.find_by(id: @review.user_id)
     attributes = {
       content: params[:content],
       flagged: params[:flagged],
       image_url: params[:image_url]
     }
-    if current_user.id == @review.user_id
+    if current_user.access_token == @user.access_token
       if @review.update(attributes)
         render json: { user: @review.as_json(only: [:id, :content, :user_id, 
                                                     :establishment_id, 
