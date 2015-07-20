@@ -79,7 +79,7 @@ class ReviewsController < ApplicationController
 
   private
   def blank(params)
-    if params = ""
+    if params == ""
       params = false 
     else
       params
