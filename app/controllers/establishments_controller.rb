@@ -68,7 +68,7 @@ class EstablishmentsController < ApplicationController
     @establishments = @establishments.price(params[:price]) if params[:price].present?
     @establishments = @establishments.coffee_quality(params[:coffee_quality]) if params[:coffee_quality].present?
     @establishments = @establishments.page(params[:page]).per(params[:per])
-    render json: @establishments, status: :ok
+    render json: @establishments.sample, status: :ok
   end
   
 
