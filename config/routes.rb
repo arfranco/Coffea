@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'establishment/:id', to: 'establishments#show'
   patch 'establishment/:id', to: 'establishments#update'
   get 'establishments/search', to: 'establishments#search'
+  delete 'establishment/:id', to: 'establishments#delete'
 
   post 'reviews/new', to: 'reviews#create'
   get 'reviews/all', to: 'reviews#index'

@@ -71,6 +71,12 @@ class EstablishmentsController < ApplicationController
     # @establishments = @establishments.page(params[:page]).per(params[:per])
     render json: @establishments, status: :ok
   end
+
+  def delete
+    @establishment = Establishment.find_by(id: params[:id])
+    @establishment.destroy
+        render json: { message: "Establishment has been deleted." }, status: :no_content
+  end
   
 
   private 
