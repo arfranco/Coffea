@@ -441,6 +441,23 @@ Response Status Code: 401
   ```
 
 ###Search Establishments
+***Pagination Enabled:***
+
+*Parameters*
+
+Name | Description
+--- |---
+page | **Optional.** Set the page of data to access.
+per | **Optional.** Set how many items will be retrieved per page.
+
+**Example Path**
+
+`GET '/establishments/search?page=2&per=25'`
+
+OR
+
+`GET '/establishments/search?page=4'`
+
 * Path: `GET '/establishments/search'`
 * Params: 
   * coffee_quality: an integer
