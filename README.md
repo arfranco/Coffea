@@ -136,7 +136,7 @@ Response Status Code: 401
 ###Delete Individual User
 * Path: `DELETE '/user/delete/:username'`
 * Params:
-  * username: a string
+  * None
 * Response:
   * Status Code: 201 if successful
   * Example success:
@@ -238,7 +238,7 @@ Response Status Code: 401
 ###Delete Individual Review
 * Path: `DELETE '/review/:id'`
 * Params:
-  * review id: an integer
+  * None
 * Response:
   * Status Code: 201 if successful
   * Example success:
