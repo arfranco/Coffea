@@ -134,7 +134,7 @@ Response Status Code: 401
 
 
 ###Delete Individual User
-* Path: `DELETE '/user/:username/delete'`
+* Path: `DELETE '/user/delete/:username'`
 * Params:
   * username: a string
 * Response:
@@ -145,7 +145,7 @@ Response Status Code: 401
   ```
 
 ###Update Individual User
-* Path: `PATCH '/user/:username/update'`
+* Path: `PATCH '/user/update/:username'`
 * Params: Make sure all params are entered even if to update only one param
   * email: a string
   * password: a string
