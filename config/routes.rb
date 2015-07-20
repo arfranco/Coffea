@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post 'users/login', to: 'users#login'
   get 'user/:id', to: 'users#show'
   get 'users', to: 'users#index'
-  delete 'user/:username/delete', to: 'users#delete'
-  patch 'user/:username/update', to: 'users#update'
+  delete 'user/delete', to: 'users#delete'
+  patch 'user/update', to: 'users#update'
 
   post 'establishments/new', to: 'establishments#create'
   get 'establishments', to: 'establishments#index'
