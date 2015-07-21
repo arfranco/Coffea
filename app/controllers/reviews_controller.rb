@@ -74,7 +74,7 @@ class ReviewsController < ApplicationController
   def flag
     @review = Review.find_by(id: params[:id])
     if @review.update(flagged: params[:flagged])
-        render json: { review: @review.as_json(only: [:flagged]) }, 
+        render json: { review: @review.as_json(only: [:id, :user_id, :content, :flagged]) }, 
         status: :ok
     else
       render json: { errors: "There was an issue with the flag you tried to report." }, 
