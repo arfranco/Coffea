@@ -77,7 +77,7 @@ class ReviewsController < ApplicationController
     if @reviews.present?
       render json: @reviews, status: :ok
     else
-      render json { message: "No results were found"}
+      render json: { message: "No results were found"}
   end
 
   private
