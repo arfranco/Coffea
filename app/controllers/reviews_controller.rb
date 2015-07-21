@@ -78,6 +78,7 @@ class ReviewsController < ApplicationController
       render json: @reviews, status: :ok
     else
       render json: { message: "No results were found"}
+    end
   end
 
   private
