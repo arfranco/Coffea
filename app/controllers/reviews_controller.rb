@@ -73,7 +73,7 @@ class ReviewsController < ApplicationController
 
   def flag
     @review = Review.find_by(id: params[:id])
-    if @review.update(params[:flagged])
+    if @review.update(flagged: params[:flagged])
         render json: { review: @review.as_json(only: [:flagged]) }, 
         status: :ok
     else
