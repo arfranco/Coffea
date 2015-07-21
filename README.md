@@ -251,7 +251,6 @@ Response Status Code: 401
 * Path: `PATCH '/review/:id'`
 * Params: Make sure all params are entered even if to update only one param
   * content: a string
-  * flagged: a boolean
   * image_url: a string
 * Response:
   * Status Code: 201 if successful
