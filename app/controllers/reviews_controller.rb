@@ -74,7 +74,10 @@ class ReviewsController < ApplicationController
   def search
     search_text = params[:keyword]
     @reviews = Review.quick_search(search_text)
-    render json: @reviews, status: :ok
+    if @reviews.present?
+      render json: @reviews, status: :ok
+    else
+      render json { message: "No results were found"}
   end
 
   private
