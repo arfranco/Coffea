@@ -71,6 +71,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def flag
+    @review = Review.find_by(id: params[:id])
+    if @review.update(param[:flagged])
+        render json: { review: @review.as_json(only: [:flagged]) }, 
+        status: :ok
+    else
+      render json: { errors: "There was an issue with the flag you tried to report." }, 
+                    status: :unproccessable_entity
+    end
+  end
+
   def search
     search_text = params[:keyword]
     @reviews = Review.quick_search(search_text)
@@ -92,7 +103,7 @@ class ReviewsController < ApplicationController
 
  def set_attributes(params)
   attributes = { }
-  list = [:content, :flagged, :image_url]
+  list = [:content, :image_url]
   list.each do |l|
     if params[l]
       attributes.merge!(l => params[l])
