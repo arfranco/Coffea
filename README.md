@@ -15,6 +15,7 @@
   * [Index](#reviews-index)
   * [Delete](#delete-individual-review)
   * [Update](#update-individual-review)
+  * [Flag](#flag-individual-review)
   * [Search](#search-reviews)
   * [Available Reviews](#available-reviews-index)
 4. [Establishments Model](#establishments-model)
@@ -262,6 +263,21 @@ Response Status Code: 401
     "establishment_id":1,
     "flagged":false,
     "image_url":""}}
+  ```
+
+###Flag Individual Review
+* Path: `PATCH '/review/flag/:id'`
+* Params: Make sure all params are entered even if to update only one param
+  * flagged: a boolean
+* Response:
+  * Status Code: 201 if successful
+  * Example success:
+  ``` 
+  {"review":
+    {"id":65,
+    "content":"This is an updated test review",
+    "user_id":1,
+    "flagged":true}}
   ```
 
 ###Search Reviews
